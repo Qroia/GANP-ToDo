@@ -4,7 +4,7 @@ services:
   db:
     container_name: postgres-db
     image: postgres:14-alpine
-    restart: always
+    restart: unless-stopped
     environment:
       - POSTGRES_USER=${TYPEORM_USERNAME}
       - POSTGRES_PASSWORD=${TYPEORM_PASSWORD}
@@ -33,6 +33,10 @@ services:
       - TYPEORM_HOST=db
   frontend:
     container_name: front
+    volumes:
+      - /etc/ssl/cert.pem:/etc/ssl/cert.pem
+      - /etc/ssl/key.pem:/etc/ssl/key.pem
+      - /etc/ssl/cloudflare.crt:/etc/ssl/cloudflare.crt
     build:
       context: ./front
     depends_on:
@@ -41,3 +45,4 @@ services:
     restart: unless-stopped
     ports:
       - '80:80'
+      - '443:443'
