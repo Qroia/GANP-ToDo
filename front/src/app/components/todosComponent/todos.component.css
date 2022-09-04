@@ -1,0 +1,31 @@
+.category-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  margin: 15px;
+  font-size: 16px;
+}
+
+.category-list {
+  overflow: auto;
+  width: 90%;
+  margin: 10px;
+  height: max-content;
+}
+
+.header-todo {
+  display: block!important;
+  padding: 5px;
+}
+
+.header-todo-title {
+  margin-top: -10px;
+}
+
+.todo-list {
+  margin-top: 10px;
+}
+
+.todo-complete {
+  text-decoration: line-through;
+}

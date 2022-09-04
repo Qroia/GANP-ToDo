@@ -1,0 +1,15 @@
+/* HEADER CONTAINER */
+
+.header-title {
+  color: white;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: right;
+  max-width: 100%;
+}
+
+.buttonContainer {
+  margin-left: calc(100%/2.25);
+}

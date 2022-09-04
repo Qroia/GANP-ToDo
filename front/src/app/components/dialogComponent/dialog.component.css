@@ -1,0 +1,34 @@
+/* DIALOG CONTAINER */
+
+.error {
+  color: red;
+}
+
+.wd-48 {
+  width: 48%;
+}
+
+.dialog-container {
+  display: inherit!important;
+}
+
+.title-dialog {
+  text-align: center;
+}
+
+.submit-button {
+  background-color: cornflowerblue!important;
+  color: white!important;
+}
+
+.grid {
+  display: grid;
+}
+
+.dialog {
+  display: flex;
+}
+
+.text-field {
+  width: 100%;
+}

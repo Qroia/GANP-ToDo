@@ -1,0 +1,40 @@
+<div class="title-dialog">
+  <h5 mat-dialog-title><b>НОВАЯ ЗАДАЧА</b></h5>
+</div>
+<div mat-dialog-content class="dialog-container">
+  <form [formGroup]="ExampleDialogReactiveForm" (submit)="onSubmit()">
+    <div class="grid">
+      <label for="text">Текст задания</label>
+      <mat-form-field appearance="fill">
+        <input matInput placeholder="Новая задача" type="text" id="text" formControlName="text" />
+      </mat-form-field>
+    </div>
+    <div class="error" *ngIf="isControlInvalid('text')">
+      Доступны буквы Латыницы, Кириллицы и цифры
+    </div>
+
+    <div class="grid" *ngIf="categories">
+      <label for="categories">Категория</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Категория</mat-label>
+        <mat-select formControlName="categories">
+          <mat-option id="categories" *ngFor="let item of categories" [value]="item">
+            {{item}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="grid" *ngIf="checkCategoryVariable('categories')">
+      <label for="category">Новая Категория</label>
+      <mat-form-field appearance="fill">
+        <input matInput  type="text" id="category" formControlName="category" placeholder="Название категории">
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions style="justify-content: space-between">
+      <button class="wd-48" mat-button (click)="onCancel()">Отмена</button>
+      <button class="wd-48 submit-button" mat-button type="submit">ОК</button>
+    </div>
+  </form>
+</div>
