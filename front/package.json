@@ -20,11 +20,13 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
-    "apollo-angular": "^4.0.1",
-    "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
     "@apollo/client": "^3.0.0",
-    "graphql": "^16"
+    "apollo-angular": "^4.0.1",
+    "class-transformer": "^0.5.1",
+    "graphql": "^16",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.1.3",

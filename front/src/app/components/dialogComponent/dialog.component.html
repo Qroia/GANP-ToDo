@@ -18,7 +18,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Категория</mat-label>
         <mat-select formControlName="categories">
-          <mat-option id="categories" *ngFor="let item of categories" [value]="item">
+          <mat-option id="categories" *ngFor="let item of categories; trackBy: trackByFn" [value]="item">
             {{item}}
           </mat-option>
         </mat-select>

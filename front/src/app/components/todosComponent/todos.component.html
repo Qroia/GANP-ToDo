@@ -6,7 +6,7 @@
       </div>
     </mat-card-header>
     <mat-divider></mat-divider>
-    <section class="todo-list" *ngFor="let item of category.todos">
+    <section class="todo-list" *ngFor="let item of category.todos; trackBy: trackByFn">
       <mat-checkbox [checked]="item.isCompleted" (change)="todoComplete(category.id, item.id)">
         <div class="{{ item.isCompleted ? 'todo-complete' : ''}}">{{item.text}}</div>
       </mat-checkbox>

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Apollo } from "apollo-angular";
 import { map, Observable } from "rxjs";
-import { ICategories, ITodoComplete } from "../../interfaces";
+import { ICategories, ITodo } from "../../interfaces";
 import { GET_ALL_CATEGORIES, IGET_ALL_CATEGORIES } from "./gql/get-all-categories";
 import { COMPLETE_TODO, ICOMPLETE_TODO } from "./gql/complete-todo";
 
@@ -20,7 +20,7 @@ export class TodosService {
     }).valueChanges.pipe(map(( { data} ) => data.categories))
   }
 
-  completeTodo(categoryId: number, id: number): Observable<ITodoComplete | undefined> {
+  completeTodo(categoryId: number, id: number): Observable<ITodo | undefined> {
     return this.apollo.mutate<ICOMPLETE_TODO>({
       mutation: COMPLETE_TODO,
       variables: {

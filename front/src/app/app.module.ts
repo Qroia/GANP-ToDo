@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import 'reflect-metadata'
 
 import { AppComponent } from './app.component';
 import {RouterModule} from "@angular/router";
@@ -15,7 +16,6 @@ import {DialogModule} from "./components/dialogComponent/dialog.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TodosModule} from "./components/todosComponent/todos.module";
 import {Apollo} from "apollo-angular";
-import {TodosComponent} from "./components/todosComponent/todos.component";
 import {DataSharingService} from "./sharing/data-sharing.service";
 
 @NgModule({
@@ -37,7 +37,7 @@ import {DataSharingService} from "./sharing/data-sharing.service";
     GraphQLModule,
     HttpClientModule
   ],
-  providers: [Apollo, TodosComponent, DataSharingService],
+  providers: [Apollo, DataSharingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

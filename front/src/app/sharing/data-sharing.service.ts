@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
 import { ICategories } from "../interfaces";
 import { TodosService } from "../components/todosComponent/todos.service";
 
@@ -10,7 +9,7 @@ export class DataSharingService {
     private readonly todosService: TodosService,
   ) {}
 
-  public categoriesData: BehaviorSubject<ICategories[]> = new BehaviorSubject(this.onRead());
+  public categoriesData: ICategories[] = this.onRead();
 
   onRead() {
     const data: ICategories[] = [];

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Apollo } from "apollo-angular";
 import { map, Observable } from "rxjs";
-import { ICategory } from "../../interfaces";
+import { ICategories } from "../../interfaces";
 import { CREATE_TODO, ICREATE_TODO } from "./gql/create-todo";
 
 @Injectable({
@@ -12,7 +12,7 @@ export class DialogService {
     private readonly apollo: Apollo,
   ) {}
 
-  createTodo(text: string, categoryName: string): Observable<ICategory | undefined> {
+  createTodo(text: string, categoryName: string): Observable<ICategories | undefined> {
     return this.apollo.mutate<ICREATE_TODO>({
       mutation: CREATE_TODO,
       variables: {

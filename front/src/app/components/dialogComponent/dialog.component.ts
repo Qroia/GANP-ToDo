@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
 import { DialogService } from "./dialog.service";
 import { DataSharingService } from "../../sharing/data-sharing.service";
+import {plainToClass} from "class-transformer";
+import {Categories} from "../../sharing/categories-class-transformer";
 
 @Component({
   templateUrl: 'dialog.component.html',
@@ -20,11 +22,10 @@ export class DialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.dataSharingService.categoriesData.subscribe(res => {
-      for (let i = 0; i < res.length; i++) {
-        this.categories?.push(res[i].title);
-      }
-    });
+    const data = this.dataSharingService.categoriesData;
+    for (let i = 0; i < data.length; i++) {
+      this.categories.push(data[i].title);
+    }
     this.initForm();
   }
 
@@ -41,6 +42,10 @@ export class DialogComponent implements OnInit {
         Validators.pattern(/[A-Za-zА-Яа-я1234567890]/)
       ]]
     })
+  }
+
+  trackByFn(index: any, item: any) {
+    return index
   }
 
   isControlInvalid(controlText: string): boolean {
@@ -66,7 +71,33 @@ export class DialogComponent implements OnInit {
     const title = formValues.category == '' ? formValues.categories : formValues.category;
 
     this.dialogService.createTodo(formValues.text, title).subscribe(res => {
-      this.dataSharingService.categoriesData.next(this.dataSharingService.onRead());
+      const categoriesData = plainToClass(Categories, res);
+      if (categoriesData.id) {
+        // Edit local data
+        if (formValues.category != '') {
+          this.dataSharingService.categoriesData.push({
+            id: categoriesData.id,
+            title: title,
+            todos: [{
+              id: categoriesData.todos[0].id,
+              text: formValues.text,
+              isCompleted: false
+            }]
+          })
+        } else {
+          this.dataSharingService.categoriesData.map((item, i) => {
+            if (item.id == categoriesData.id) {
+              item.todos.push({
+                id: categoriesData.todos[categoriesData.todos.length - 1].id,
+                text: formValues.text,
+                isCompleted: false
+              })
+            }
+            return item;
+          })
+        }
+      }
+      //this.dataSharingService.categoriesData.next(this.dataSharingService.onRead());
       this.onCancel();
     });
   }

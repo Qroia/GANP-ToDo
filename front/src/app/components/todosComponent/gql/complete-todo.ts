@@ -1,8 +1,8 @@
-import { ITodoComplete } from "../../../interfaces";
+import { ITodo } from "../../../interfaces";
 import { gql } from "apollo-angular";
 
 export interface ICOMPLETE_TODO {
-  completedTodo: ITodoComplete;
+  completedTodo: ITodo;
 }
 
 export const COMPLETE_TODO = gql`
