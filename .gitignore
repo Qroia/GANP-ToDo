@@ -38,3 +38,7 @@ pgdata
 # IDE - VSCode
 */.vscode
 .vscode
+
+# SSL Keys
+*/*.pem
+*/*.crt

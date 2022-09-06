@@ -31,6 +31,11 @@ TYPEORM_PORT=5432
 ### nginx.conf
 `~/front/nginx.conf`
 
+### SSL
+`~/front/cert.pem`
+`~/front/key.pem`
+`~/front/cloudflare.crt`
+
 ## Migrations (Seeds)
 1. Выставить для значения synchronize в ./back/src/config/db.config.js
 2. Там же убрать комментарий с migrations
